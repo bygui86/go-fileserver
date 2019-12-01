@@ -1,0 +1,64 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: ingress-default
+data:
+  index.html: |
+    <!doctype html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Cluster Ingress Index</title>
+        <link rel="stylesheet" href="main.css">
+      </head>
+      <body>
+        <table class="class1">
+          <tr>
+            <td class="class2">Kubernetes Platform</td>
+          </tr>
+          <tr>
+            <td class="class1">
+              <table class="class3">
+                <tr><td><h1>Cluster Ingress Index</h1></td></tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table class="class3">
+                <tr>
+                <td>
+                   <h2>The following are links to this cluster's ingress resources:</h2>
+                  </td>
+                </tr>
+                <tr>
+                <td class="class4">
+                    <a href="https://<ROOT_INGRESS_PATH>" target="_blank">Root Ingress</a><br/>
+                    <a href="https://<OTHER_INGRESS_PATH>" target="_blank">Other Ingress</a><br/>
+                 </td>
+               </tr>
+              </table>
+            </td>
+          </tr>
+         </table>
+      </body>
+    </html>
+
+  main.css: |
+    body {
+      background-color: rgb(224,224,224);
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-size: 100%;
+    }
+    .class1 {
+      # ...
+    }
+    .class2 {
+      # ...
+    }
+    .class3 {
+      # ...
+    }
+    .class4 {
+      # ...
+    }

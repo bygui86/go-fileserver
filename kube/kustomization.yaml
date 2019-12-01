@@ -1,0 +1,11 @@
+namespace: default
+
+resources:
+  - configmap.yaml
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+
+commonLabels:
+  app: ingress-default
+  group: networking

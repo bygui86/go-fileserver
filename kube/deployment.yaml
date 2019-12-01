@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress-default
+  annotations:
+    version: 1.0.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingress-default
+  template:
+    metadata:
+      name: ingress-default
+      labels:
+        app: ingress-default
+    spec:
+      containers:
+        - name: ingress-default
+          image: bygui86/go-fileserver:0.0.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+#            MISSING METRICS
+#            - name: metrics
+#              containerPort: 9090
+#            MISSING PROBES
+#            - name: probes
+#              containerPort: 9091
+          resources:
+            limits:
+              cpu: 100m
+              memory: 10Mi
+            requests:
+              cpu: 100m
+              memory: 10Mi
+#           MISSING PROBES
+#          livenessProbe:
+#            httpGet:
+#              path: /live
+#              port: 9091
+#            initialDelaySeconds: 30
+#            periodSeconds: 5
+#            timeoutSeconds: 3
+#            successThreshold: 1
+#            failureThreshold: 3
+#          readinessProbe:
+#            httpGet:
+#              path: /ready
+#              port: 9091
+#            initialDelaySeconds: 10
+#            periodSeconds: 5
+#            timeoutSeconds: 3
+#            successThreshold: 1
+#            failureThreshold: 3
+          volumeMounts:
+            - mountPath: html
+              name: html-files
+              readOnly: true
+      volumes:
+        - name: html-files
+          configMap:
+            name: ingress-default

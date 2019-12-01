@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ingress-default
+spec:
+  selector:
+    app: ingress-default
+    group: networking
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
